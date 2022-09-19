@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext } from 'react';
 import { useQuery, RefetchOptions, RefetchQueryFilters } from 'react-query';
-import { getHotelCountByCity, getHotelCountByType } from '../lib/api';
+import { getFeaturedProperties, getHotelCountByCity, getHotelCountByType } from '../lib/api';
 import { Hotel, HotelTypeCount, QueryKeys } from '../types';
 
 type RefetchType = <TPageData>(
@@ -9,7 +9,11 @@ type RefetchType = <TPageData>(
 
 const HotelContext = createContext<{
 	count: number[];
+	countIsLoading: boolean;
 	type: HotelTypeCount[];
+	typeIsLoading: boolean;
+	featured: Hotel[];
+	featuredIsLoading: boolean;
 	// refetch: RefetchType;
 	// @ts-ignore
 }>(null);
@@ -25,12 +29,24 @@ function HotelContextProvider({ children }: { children: ReactNode }) {
 		isLoading: typeIsLoading,
 		refetch: typeRefetch
 	} = useQuery(QueryKeys.hotelCountByType, getHotelCountByType);
+	const {
+		data: featuredProperties,
+		isLoading: featuredIsLoading,
+		refetch: featuredRefetch
+	} = useQuery(QueryKeys.featuredProperties, getFeaturedProperties);
 
 	return (
 		<HotelContext.Provider
-			value={{ count: countByCity as number[], type: countbyType as HotelTypeCount[] }}
+			value={{
+				count: countByCity as number[],
+				countIsLoading,
+				type: countbyType as HotelTypeCount[],
+				typeIsLoading,
+				featured: featuredProperties as Hotel[],
+				featuredIsLoading
+			}}
 		>
-			{countIsLoading || typeIsLoading ? <p>Loading</p> : children}
+			{children}
 		</HotelContext.Provider>
 	);
 }

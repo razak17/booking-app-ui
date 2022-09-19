@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 export enum QueryKeys {
 	me = 'me',
 	hotels = 'hotels',
 	featuredHotels = 'featuredHotels',
 	hotelCountByCity = 'hotelCountByCity',
 	hotelCountByType = 'hotelCountByType',
+	featuredProperties = 'featuredProperties',
 	rooms = 'rooms'
 }
 
@@ -24,4 +26,7 @@ export interface Hotel {
 	city: string;
 	address: string;
 	distance: string;
+	rating: number;
+	cheapestPrice: number;
+	photos: string[];
 }

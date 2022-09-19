@@ -4,7 +4,7 @@ import { useHotel } from '../context/hotels';
 import styles from '../styles/PropertyList.module.css';
 
 function PropertyList() {
-	const { type } = useHotel();
+	const { type, typeIsLoading } = useHotel();
 	console.log({ type });
 
 	const images = [
@@ -17,24 +17,30 @@ function PropertyList() {
 
 	return (
 		<div className={styles.pList}>
-			{type &&
-				images.map((img, i) => (
-					<div className={styles.pListItem} key={i}>
-						<Image
-							width='200px'
-							height='150px'
-							src={img}
-							alt='propertyType'
-							className={styles.pListImg}
-						/>
-						<div className={styles.pListTitles}>
-							<h1>{type[i]?.type}</h1>
-							<h2>
-								{type[i]?.count} {type[i]?.type}
-							</h2>
-						</div>
-					</div>
-				))}
+			{typeIsLoading ? (
+				<p>Loading please wait</p>
+			) : (
+				<>
+					{type &&
+						images.map((img, i) => (
+							<div className={styles.pListItem} key={i}>
+								<Image
+									width='200px'
+									height='150px'
+									src={img}
+									alt='propertyType'
+									className={styles.pListImg}
+								/>
+								<div className={styles.pListTitles}>
+									<h1>{type[i]?.type}</h1>
+									<h2>
+										{type[i]?.count} {type[i]?.type}
+									</h2>
+								</div>
+							</div>
+						))}
+				</>
+			)}
 		</div>
 	);
 }

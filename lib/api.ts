@@ -30,3 +30,8 @@ export async function getHotelCountByType(): Promise<HotelTypeCount[]> {
 	const res = await auth.get(`${hotelsBase}/countByType`);
 	return res.data;
 }
+
+export async function getFeaturedProperties(): Promise<Hotel[]> {
+	const res = await auth.get(`${hotelsBase}?featured=true`);
+	return res.data;
+}
