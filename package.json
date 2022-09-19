@@ -28,6 +28,7 @@
 		"@fsouza/prettierd": "^0.22.2",
 		"@types/node": "18.7.18",
 		"@types/react": "18.0.20",
+		"@types/react-date-range": "^1.4.4",
 		"@types/react-dom": "18.0.6",
 		"eslint": "8.23.1",
 		"eslint-config-next": "12.3.0",
