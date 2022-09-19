@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 import { useHotel } from '../context/hotels';
 import styles from '../styles/PropertyList.module.css';
