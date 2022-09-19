@@ -1,22 +1,36 @@
 import { createContext, ReactNode, useContext } from 'react';
 import { useQuery, RefetchOptions, RefetchQueryFilters } from 'react-query';
-import { getFeaturedHotelsCount } from '../lib/api';
-import { Hotel, QueryKeys } from '../types';
+import { getHotelCountByCity, getHotelCountByType } from '../lib/api';
+import { Hotel, HotelTypeCount, QueryKeys } from '../types';
+
+type RefetchType = <TPageData>(
+	options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
+) => any;
 
 const HotelContext = createContext<{
 	count: number[];
-	refetch: <TPageData>(
-		options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
-	) => any;
+	type: HotelTypeCount[];
+	// refetch: RefetchType;
 	// @ts-ignore
 }>(null);
 
 function HotelContextProvider({ children }: { children: ReactNode }) {
-	const { data, isLoading, refetch } = useQuery(QueryKeys.featuredHotels, getFeaturedHotelsCount);
+	const {
+		data: countByCity,
+		isLoading: countIsLoading,
+		refetch: countRefetch
+	} = useQuery(QueryKeys.hotelCountByCity, getHotelCountByCity);
+	const {
+		data: countbyType,
+		isLoading: typeIsLoading,
+		refetch: typeRefetch
+	} = useQuery(QueryKeys.hotelCountByType, getHotelCountByType);
 
 	return (
-		<HotelContext.Provider value={{ count: data as number[], refetch }}>
-			{isLoading ? <p>Loading</p> : children}
+		<HotelContext.Provider
+			value={{ count: countByCity as number[], type: countbyType as HotelTypeCount[] }}
+		>
+			{countIsLoading || typeIsLoading ? <p>Loading</p> : children}
 		</HotelContext.Provider>
 	);
 }

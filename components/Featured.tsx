@@ -3,8 +3,7 @@ import styles from '../styles/Featured.module.css';
 import FeaturedItem from './FeaturedItem';
 
 const Featured = () => {
-	const { count, refetch } = useHotel();
-
+	const { count } = useHotel();
 	console.log({ count });
 
 	return (
