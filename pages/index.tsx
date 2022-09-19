@@ -12,17 +12,17 @@ import styles from '../styles/Home.module.css';
 const Home: NextPage = () => {
 	return (
 		<HotelContextProvider>
-			<Navbar />
-			<Header />
-			<div className={styles.homeContainer}>
-				<Featured />
-				<h1 className={styles.homeTitle}>Browse by property type</h1>
-				<PropertyList />
-				<h1 className={styles.homeTitle}>Homes guests love</h1>
-				<FeaturedProperties />
-				<MailList />
-				<Footer />
-			</div>
+				<Navbar />
+				<Header />
+				<div className={styles.homeContainer}>
+					<Featured />
+					<h1 className={styles.homeTitle}>Browse by property type</h1>
+					<PropertyList />
+					<h1 className={styles.homeTitle}>Homes guests love</h1>
+					<FeaturedProperties />
+					<MailList />
+					<Footer />
+				</div>
 		</HotelContextProvider>
 	);
 };

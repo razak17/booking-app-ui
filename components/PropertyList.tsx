@@ -17,7 +17,7 @@ function PropertyList() {
 	return (
 		<div className={styles.pList}>
 			{typeIsLoading ? (
-				<p>Loading please wait</p>
+				<p>Loading...</p>
 			) : (
 				<>
 					{type &&

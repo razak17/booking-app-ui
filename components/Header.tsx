@@ -15,31 +15,16 @@ import styles from '../styles/Header.module.css';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { useMe } from '../context/me';
+import { useRouter } from 'next/router';
+import { useSearch } from '../context/search';
 
 const Header = ({ type }: { type?: string }) => {
-	const [destination, setDestination] = useState('');
+	const router = useRouter();
 	const [openDate, setOpenDate] = useState(false);
-	const [dates, setDates] = useState<
-		{
-			startDate?: Date;
-			endDate?: Date;
-			key?: string;
-		}[]
-	>([
-		{
-			startDate: new Date(),
-			endDate: new Date(),
-			key: 'selection'
-		}
-	]);
 	const [openOptions, setOpenOptions] = useState(false);
-	const [options, setOptions] = useState<{ adult: number; children: number; room: number }>({
-		adult: 1,
-		children: 0,
-		room: 1
-	});
 
 	const { user } = useMe();
+	const { destination, setDestination, dates, setDates, options, setOptions } = useSearch();
 
 	const handleOption = (name: 'adult' | 'children' | 'room', operation: string) => {
 		setOptions((prev) => {
@@ -51,7 +36,7 @@ const Header = ({ type }: { type?: string }) => {
 	};
 
 	const handleSearch = () => {
-		// navigate("/hotels", { state: { destination, dates, options } });
+		router.push('/hotels');
 	};
 
 	return (

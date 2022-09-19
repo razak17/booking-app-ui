@@ -22,16 +22,28 @@ export async function getMe() {
 }
 
 export async function getHotelCountByCity(): Promise<number[]> {
-	const res = await auth.get(`${hotelsBase}/countByCity?cities=berlin,madrid,london,paris`);
+	const res = await axios.get(`${hotelsBase}/countByCity?cities=berlin,madrid,london,paris`);
 	return res.data;
 }
 
 export async function getHotelCountByType(): Promise<HotelTypeCount[]> {
-	const res = await auth.get(`${hotelsBase}/countByType`);
+	const res = await axios.get(`${hotelsBase}/countByType`);
 	return res.data;
 }
 
 export async function getFeaturedProperties(): Promise<Hotel[]> {
-	const res = await auth.get(`${hotelsBase}?featured=true`);
+	const res = await axios.get(`${hotelsBase}?featured=true`);
+	return res.data;
+}
+
+export async function getHotelListing(
+	destination: string,
+	min: number,
+	max: number
+): Promise<Hotel[]> {
+	if (!destination) throw new Error('destination is required');
+	const res = await axios.get(
+		`${hotelsBase}?city=${destination.toLowerCase()}&min=${min || 0}&max=${max || 999}`
+	);
 	return res.data;
 }
