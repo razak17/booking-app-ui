@@ -38,28 +38,36 @@
   margin: 20px 0px;
 }
 
-.headerBtn {
+.headerBtn, .searchBtn {
   background-color: #0071c2;
   color: white;
   font-weight: 500;
   border: none;
-  padding: 10px;
+  padding: 14px;
   cursor: pointer;
+  border-radius: 5px;
+}
+
+.searchBtn {
+  padding: 10px;
+}
+
+.headerBtn {
+  padding: 14px;
+  margin-bottom: 60px;
 }
 
 .headerSearch {
-  height: 30px;
+  height: 60px;
   background-color: white;
   border: 3px solid #febb02;
   display: flex;
+  margin-bottom: 50px;
   align-items: center;
   justify-content: space-around;
-  padding: 10px 0px;
+  padding: 10px 8px;
   border-radius: 5px;
-  position: absolute;
-  bottom: -25px;
   width: 100%;
-  max-width: 1024px;
 }
 
 .headerIcon {
@@ -68,6 +76,7 @@
 
 .headerSearchItem {
   display: flex;
+  padding: 0px 8px;
   align-items: center;
   gap: 10px;
 }
@@ -126,4 +135,3 @@
 .optionCounterButton:disabled {
   cursor: not-allowed;
 }
-

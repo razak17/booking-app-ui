@@ -83,7 +83,7 @@ const Header = ({ type }: { type?: string }) => {
 						<span>Airport taxis</span>
 					</div>
 				</div>
-				{type && type !== 'list' && (
+				{!type && type !== 'list' && (
 					<>
 						{/* eslint-disable max-len */}
 						<h1 className={styles.headerTitle}>A lifetime of discounts? It&apos;s Genius.</h1>
@@ -190,9 +190,7 @@ const Header = ({ type }: { type?: string }) => {
 										</div>
 									</div>
 								)}
-							</div>
-							<div className={styles.headerSearchItem}>
-								<button className={styles.headerBtn} onClick={handleSearch}>
+								<button className={styles.searchBtn} onClick={handleSearch}>
 									Search
 								</button>
 							</div>
