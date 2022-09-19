@@ -24,8 +24,6 @@ const HotelsPage = () => {
 		getHotelListing(destination, min, max)
 	);
 
-	console.log({ data });
-
 	const handleClick = () => {
 		refetch();
 	};

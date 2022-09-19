@@ -47,3 +47,9 @@ export async function getHotelListing(
 	);
 	return res.data;
 }
+
+export async function getHotelById(id: string): Promise<Hotel> {
+	if (!id) throw new Error('id is required');
+	const res = await axios.get(`${hotelsBase}/find/${id}`);
+	return res.data;
+}

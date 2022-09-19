@@ -6,6 +6,7 @@ export enum QueryKeys {
 	hotelCountByCity = 'hotelCountByCity',
 	hotelCountByType = 'hotelCountByType',
 	hotelListing = 'hotelListing',
+	hotelSearch = 'hotelSearch',
 	featuredProperties = 'featuredProperties',
 	rooms = 'rooms'
 }
@@ -23,6 +24,7 @@ export type HotelTypeCount = { type: string; count: number };
 export interface Hotel {
 	_id: string;
 	name: string;
+	title: string;
 	desc: string;
 	type: HotelType;
 	city: string;

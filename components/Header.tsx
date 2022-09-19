@@ -43,7 +43,9 @@ const Header = ({ type }: { type?: string }) => {
 		<div className={styles.header}>
 			{/* eslint-disable max-len */}
 			<div
-				className={type === 'list' ? `{styles.headerContainer listMode}` : `{styles.headerContainer}`}
+				className={
+					type === 'list' ? `${styles.headerContainer} ${styles.listMode}` : `{styles.headerContainer}`
+				}
 			>
 				{/* eslint-enable max-len */}
 				<div className={styles.headerList}>
@@ -109,7 +111,7 @@ const Header = ({ type }: { type?: string }) => {
 								<span
 									onClick={() => setOpenOptions(!openOptions)}
 									className={styles.headerSearchText}
-								>{`${options.adult} adult · ${options.children} children · ${options.room} room`}</span>
+								>{`${options.adult} adult · ${options.children} children · ${options.rooms} room`}</span>
 								{/* eslint-enable max-len */}
 								{openOptions && (
 									<div className={styles.options}>
