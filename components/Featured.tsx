@@ -9,7 +9,7 @@ const Featured = () => {
 	return (
 		<div className={styles.featured}>
 			{countIsLoading ? (
-        <p>Loading please wait</p>
+				<p>Loading please wait</p>
 			) : (
 				<>
 					<FeaturedItem
