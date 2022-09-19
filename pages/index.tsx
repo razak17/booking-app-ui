@@ -6,23 +6,24 @@ import Header from '../components/Header';
 import MailList from '../components/MailList';
 import Navbar from '../components/Navbar';
 import PropertyList from '../components/PropertyList';
-import { useMe } from '../context/me';
+import { HotelContextProvider } from '../context/hotels';
+import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
 	return (
-		<div>
+		<HotelContextProvider>
 			<Navbar />
 			<Header />
-			<div className='homeContainer'>
+			<div className={styles.homeContainer}>
 				<Featured />
-				<h1 className='homeTitle'>Browse by property type</h1>
+				<h1 className={styles.homeTitle}>Browse by property type</h1>
 				<PropertyList />
-				<h1 className='homeTitle'>Homes guests love</h1>
+				<h1 className={styles.homeTitle}>Homes guests love</h1>
 				<FeaturedProperties />
 				<MailList />
 				<Footer />
 			</div>
-		</div>
+		</HotelContextProvider>
 	);
 };
 

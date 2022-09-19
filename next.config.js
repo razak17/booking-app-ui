@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
+const imagesHosts = {
+	domains: ['images.unsplash.com', 'cf.bstatic.com']
+};
 
-module.exports = nextConfig
+const nextConfig = {
+	reactStrictMode: true,
+	swcMinify: true,
+	images: imagesHosts
+};
+
+module.exports = nextConfig;

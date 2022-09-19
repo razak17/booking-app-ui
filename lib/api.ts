@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Hotel } from '../types';
 const base = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 const auth = axios.create({
@@ -13,9 +14,14 @@ const roomsBase = `${base}/api/v1/rooms`;
 
 export async function getMe() {
 	try {
-    const res = await auth.get(`${userBase}/me`);
+		const res = await auth.get(`${userBase}/me`);
 		return res.data;
 	} catch {
 		return null;
 	}
+}
+
+export async function getFeaturedHotelsCount(): Promise<number[]> {
+	const res = await auth.get(`${hotelsBase}/countByCity?cities=berlin,madrid,london,paris`);
+	return res.data;
 }
