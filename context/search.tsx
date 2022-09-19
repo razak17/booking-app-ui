@@ -6,7 +6,7 @@ export type DatesType = {
 	key?: string;
 };
 
-export type OptionsType = { adult: number; children: number; room: number };
+export type OptionsType = { adult: number; children: number; rooms: number };
 
 const SearchContext = createContext<{
 	destination: string;
@@ -30,7 +30,7 @@ function SearchContextProvider({ children }: { children: ReactNode }) {
 	const [options, setOptions] = useState<OptionsType>({
 		adult: 1,
 		children: 0,
-		room: 1
+		rooms: 1
 	});
 
 	return (

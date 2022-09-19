@@ -92,6 +92,7 @@ const HotelsPage = () => {
 										type='number'
 										min={1}
 										className={styles.lsOptionInput}
+										onChange={(e) => setOptions({ ...options, adult: parseInt(e.target.value) })}
 										placeholder={options.adult.toString()}
 									/>
 								</div>
@@ -101,16 +102,18 @@ const HotelsPage = () => {
 										type='number'
 										min={0}
 										className={styles.lsOptionInput}
+										onChange={(e) => setOptions({ ...options, children: parseInt(e.target.value) })}
 										placeholder={options.children.toString()}
 									/>
 								</div>
 								<div className={styles.lsOptionItem}>
-									<span className='lsOptionText'>Room</span>
+									<span className='lsOptionText'>Rooms</span>
 									<input
 										type='number'
 										min={1}
 										className={styles.lsOptionInput}
-										placeholder={options.room.toString()}
+										onChange={(e) => setOptions({ ...options, rooms: parseInt(e.target.value) })}
+										placeholder={options.rooms.toString()}
 									/>
 								</div>
 							</div>
