@@ -26,7 +26,7 @@ const Header = ({ type }: { type?: string }) => {
 	const { user } = useMe();
 	const { destination, setDestination, dates, setDates, options, setOptions } = useSearch();
 
-	const handleOption = (name: 'adult' | 'children' | 'room', operation: string) => {
+	const handleOption = (name: 'adult' | 'children' | 'rooms', operation: string) => {
 		setOptions((prev) => {
 			return {
 				...prev,
@@ -159,17 +159,17 @@ const Header = ({ type }: { type?: string }) => {
 											<span className={styles.optionText}>Room</span>
 											<div className={styles.optionCounter}>
 												<button
-													disabled={options.room <= 1}
+													disabled={options.rooms <= 1}
 													className={styles.optionCounterButton}
-													onClick={() => handleOption('room', 'd')}
+													onClick={() => handleOption('rooms', 'd')}
 												>
 													-
 												</button>
 												{/* eslint-disable-next-line max-len */}
-												<span className={styles.optionCounterNumber}>{options.room}</span>
+												<span className={styles.optionCounterNumber}>{options.rooms}</span>
 												<button
 													className={styles.optionCounterButton}
-													onClick={() => handleOption('room', 'i')}
+													onClick={() => handleOption('rooms', 'i')}
 												>
 													+
 												</button>
