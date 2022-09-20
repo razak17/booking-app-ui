@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Hotel, HotelTypeCount } from '../types';
+import { Hotel, Room, HotelTypeCount } from '../types';
 const base = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 const auth = axios.create({
@@ -48,8 +48,14 @@ export async function getHotelListing(
 	return res.data;
 }
 
-export async function getHotelById(id: string): Promise<Hotel> {
-	if (!id) throw new Error('id is required');
-	const res = await axios.get(`${hotelsBase}/find/${id}`);
+export async function getHotelById(hotelId: string): Promise<Hotel> {
+	if (!hotelId) throw new Error('hotelId is required');
+	const res = await axios.get(`${hotelsBase}/find/${hotelId}`);
+	return res.data;
+}
+
+export async function getHotelRooms(hotelId: string): Promise<Room[]> {
+	if (!hotelId) throw new Error('hotelId is required');
+	const res = await axios.get(`${hotelsBase}/room/${hotelId}`);
 	return res.data;
 }

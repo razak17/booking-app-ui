@@ -64,7 +64,7 @@ const Hotel = () => {
 		if (user) {
 			setOpenModal(true);
 		} else {
-			router.push('/login');
+			router.push('/auth/login');
 		}
 	};
 	return (

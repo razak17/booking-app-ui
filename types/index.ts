@@ -7,6 +7,7 @@ export enum QueryKeys {
 	hotelCountByType = 'hotelCountByType',
 	hotelListing = 'hotelListing',
 	hotelSearch = 'hotelSearch',
+	hotelRooms = 'hotelRooms',
 	featuredProperties = 'featuredProperties',
 	rooms = 'rooms'
 }
@@ -33,4 +34,19 @@ export interface Hotel {
 	rating: number;
 	cheapestPrice: number;
 	photos: string[];
+}
+
+export type RoomNumbersType = {
+	_id: string;
+	number: number;
+	unavailableDates: Date[];
+};
+
+export interface Room {
+	_id: string;
+	title: string;
+	desc: string;
+	price: number;
+	maxPeople: number;
+	roomNumbers: RoomNumbersType[];
 }
