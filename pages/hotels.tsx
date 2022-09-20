@@ -11,7 +11,7 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import SearchItem from '../components/SearchItem';
 import { useSearch } from '../context/search';
-import { dayDifference } from '../utils/dayDiff';
+import { dayDifference } from '../utils/dates';
 
 const HotelsPage = () => {
 	const router = useRouter();

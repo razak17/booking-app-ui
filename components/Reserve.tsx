@@ -2,38 +2,24 @@ import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useQuery } from 'react-query';
-import { getHotelRooms } from '../lib/api';
+import { getHotelRooms, updateDateAvailability } from '../lib/api';
 
 import styles from '../styles/Reserve.module.css';
-import { QueryKeys, Room, RoomNumbersType } from '../types';
+import { QueryKeys, RoomNumbersType } from '../types';
 import { useSearch } from '../context/search';
 import { useRouter } from 'next/router';
-import { useIsAuth } from '../utils/useIsAuth';
+import { getDatesInRange } from '../utils/dates';
 
 interface ReserveProps {
 	hotelId: string;
 	setOpen: Dispatch<SetStateAction<boolean>>;
 }
 function Reserve({ hotelId, setOpen }: ReserveProps) {
-	useIsAuth();
-	const [selectedRooms, setSelectedRooms] = useState<Room[]>([]);
-	const { data, isLoading } = useQuery([QueryKeys.hotelRooms], () => getHotelRooms(hotelId));
+	const [selectedRoomIds, setSelectedRoomIds] = useState<string[]>([]);
+	const { data } = useQuery([QueryKeys.hotelRooms], () => getHotelRooms(hotelId));
 	const { dates } = useSearch();
 
-	const getDatesInRange = (startDate: Date, endDate: Date) => {
-		const start = new Date(startDate);
-		const end = new Date(endDate);
-
-		const date = new Date(start.getTime());
-
-		const dates = [];
-
-		while (date <= end) {
-			dates.push(new Date(date).getTime());
-			date.setDate(date.getDate() + 1);
-		}
-		return dates;
-	};
+	const router = useRouter();
 
 	const alldates = getDatesInRange(dates[0].startDate as Date, dates[0].endDate as Date);
 
@@ -46,28 +32,28 @@ function Reserve({ hotelId, setOpen }: ReserveProps) {
 	};
 
 	const handleSelect = (e: ChangeEvent<HTMLInputElement>) => {
-		// const checked = e.target.checked;
-		// const value = e.target.value;
-		// setSelectedRooms(
-		// 	checked ? [...selectedRooms, value] : selectedRooms.filter((item) => item !== value)
-		// );
+		const checked = e.target.checked;
+		const value = e.target.value;
+		console.log({ checked, value });
+		setSelectedRoomIds(
+			checked ? [...selectedRoomIds, value] : selectedRoomIds.filter((item) => item !== value)
+		);
 	};
 
-	const router = useRouter();
-
-	const handleClick = () => {
-		//try {
-		//  await Promise.all(
-		//    selectedRooms.map((roomId) => {
-		//      const res = axios.put(`/rooms/availability/${roomId}`, {
-		//        dates: alldates,
-		//      });
-		//      return res.data;
-		//    })
-		//  );
-		//  setOpen(false);
-		router.push('/');
-		// } catch (err) {}
+	const handleClick = async () => {
+		try {
+			await Promise.all(
+				selectedRoomIds.map((selectedId) => {
+					console.log({ selectedId });
+					const res = updateDateAvailability(selectedId, alldates);
+					return res;
+				})
+			);
+			setOpen(false);
+			router.replace('/');
+		} catch (err) {
+			throw err;
+		}
 	};
 
 	return (

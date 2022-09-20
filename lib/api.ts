@@ -79,3 +79,9 @@ export const logoutUser = async () => {
 	const res = await auth.post(`${authBase}/logout`);
 	return res.data;
 };
+
+export const updateDateAvailability = async (roomId: string, allDates: number[]) => {
+	if (!roomId) throw new Error('roomId is required');
+	const res = await auth.put(`${roomsBase}/availability/${roomId}`, { dates: allDates });
+	return res.data;
+};

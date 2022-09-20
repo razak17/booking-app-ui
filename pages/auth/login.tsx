@@ -12,10 +12,7 @@ import Link from 'next/link';
 
 export const FormSchema = z.object({
 	email: z.string().email('Please enter a valid email address.'),
-	password: z
-		.string()
-		.min(6, 'Please choose a longer password')
-		.max(256, 'Consider using a short password')
+	password: z.string().min(6, 'Password cannot be empty')
 });
 
 type FormSchemaType = z.infer<typeof FormSchema>;

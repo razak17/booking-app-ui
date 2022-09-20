@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Image from 'next/image';
 
 import { Hotel } from '../types';
@@ -14,7 +13,7 @@ const SearchItem = ({ item, days }: { item: Hotel; days: number }) => {
 		if (days > 0) {
 			router.push(route);
 		} else {
-			alert('Please select a date range');
+			alert('Please select check-in date');
 		}
 	};
 

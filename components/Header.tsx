@@ -74,117 +74,119 @@ const Header = ({ type }: { type?: string }) => {
 					<>
 						{/* eslint-disable max-len */}
 						<h1 className={styles.headerTitle}>A lifetime of discounts? It&apos;s Genius.</h1>
-						<p className={styles.headerDesc}>
+						<p className={user ? styles.headerDescAuth : styles.headerDesc}>
 							Get rewarded for your travels – unlock instant savings of 10% or more with a free Lamabooking
 							account
 						</p>
 						{!user && <button className={styles.headerBtn}>Sign in / Register</button>}
-            <div className={styles.headerSearchContainer}>
-						<div className={styles.headerSearch}>
-							<div className={styles.headerSearchItem}>
-								<FontAwesomeIcon icon={faBed} className={styles.headerIcon} />
-								<input
-									type='text'
-									placeholder='Where are you going?'
-									className={styles.headerSearchInput}
-									onChange={(e) => setDestination(e.target.value)}
-								/>
-							</div>
-							<div className={styles.headerSearchItem}>
-								<FontAwesomeIcon icon={faCalendarDays} className={styles.headerIcon} />
-								<span onClick={() => setOpenDate(!openDate)} className={styles.headerSearchText}>{`${format(
-									dates[0].startDate as Date,
-									'MM/dd/yyyy'
-								)} to ${format(dates[0].endDate as Date, 'MM/dd/yyyy')}`}</span>
-								{openDate && (
-									<DateRange
-										editableDateInputs={true}
-										onChange={(item) => setDates([item.selection as Range])}
-										moveRangeOnFirstSelection={false}
-										ranges={dates}
-										className={styles.date}
-										minDate={new Date()}
+						<div className={styles.headerSearchContainer}>
+							<div className={styles.headerSearch}>
+								<div className={styles.headerSearchItem}>
+									<FontAwesomeIcon icon={faBed} className={styles.headerIcon} />
+									<input
+										type='text'
+										placeholder='Where are you going?'
+										className={styles.headerSearchInput}
+										onChange={(e) => setDestination(e.target.value)}
 									/>
-								)}
-							</div>
-							<div className={styles.headerSearchItem}>
-								<FontAwesomeIcon icon={faPerson} className={styles.headerIcon} />
-								<span
-									onClick={() => setOpenOptions(!openOptions)}
-									className={styles.headerSearchText}
-								>{`${options.adult} adult · ${options.children} children · ${options.rooms} room`}</span>
-								{/* eslint-enable max-len */}
-								{openOptions && (
-									<div className={styles.options}>
-										<div className={styles.optionItem}>
-											<span className={styles.optionText}>Adult</span>
-											<div className={styles.optionCounter}>
-												<button
-													disabled={options.adult <= 1}
-													className={styles.optionCounterButton}
-													onClick={() => handleOption('adult', 'd')}
-												>
-													-
-												</button>
-												{/* eslint-disable-next-line max-len */}
-												<span className={styles.optionCounterNumber}>{options.adult}</span>
-												<button
-													className={styles.optionCounterButton}
-													onClick={() => handleOption('adult', 'i')}
-												>
-													+
-												</button>
+								</div>
+								<div className={styles.headerSearchItem}>
+									<FontAwesomeIcon icon={faCalendarDays} className={styles.headerIcon} />
+									<span
+										onClick={() => setOpenDate(!openDate)}
+										className={styles.headerSearchText}
+									>{`${format(dates[0].startDate as Date, 'MM/dd/yyyy')} to ${format(
+										dates[0].endDate as Date,
+										'MM/dd/yyyy'
+									)}`}</span>
+									{openDate && (
+										<DateRange
+											editableDateInputs={true}
+											onChange={(item) => setDates([item.selection as Range])}
+											moveRangeOnFirstSelection={false}
+											ranges={dates}
+											className={styles.date}
+											minDate={new Date()}
+										/>
+									)}
+								</div>
+								<div className={styles.headerSearchItem}>
+									<FontAwesomeIcon icon={faPerson} className={styles.headerIcon} />
+									<span
+										onClick={() => setOpenOptions(!openOptions)}
+										className={styles.headerSearchText}
+									>{`${options.adult} adult · ${options.children} children · ${options.rooms} room`}</span>
+									{/* eslint-enable max-len */}
+									{openOptions && (
+										<div className={styles.options}>
+											<div className={styles.optionItem}>
+												<span className={styles.optionText}>Adult</span>
+												<div className={styles.optionCounter}>
+													<button
+														disabled={options.adult <= 1}
+														className={styles.optionCounterButton}
+														onClick={() => handleOption('adult', 'd')}
+													>
+														-
+													</button>
+													{/* eslint-disable-next-line max-len */}
+													<span className={styles.optionCounterNumber}>{options.adult}</span>
+													<button
+														className={styles.optionCounterButton}
+														onClick={() => handleOption('adult', 'i')}
+													>
+														+
+													</button>
+												</div>
+											</div>
+											<div className={styles.optionItem}>
+												<span className={styles.optionText}>Children</span>
+												<div className={styles.optionCounter}>
+													<button
+														disabled={options.children <= 0}
+														className={styles.optionCounterButton}
+														onClick={() => handleOption('children', 'd')}
+													>
+														-
+													</button>
+													{/* eslint-disable-next-line max-len */}
+													<span className={styles.optionCounterNumber}>{options.children}</span>
+													<button
+														className={styles.optionCounterButton}
+														onClick={() => handleOption('children', 'i')}
+													>
+														+
+													</button>
+												</div>
+											</div>
+											<div className={styles.optionItem}>
+												<span className={styles.optionText}>Room</span>
+												<div className={styles.optionCounter}>
+													<button
+														disabled={options.rooms <= 1}
+														className={styles.optionCounterButton}
+														onClick={() => handleOption('rooms', 'd')}
+													>
+														-
+													</button>
+													{/* eslint-disable-next-line max-len */}
+													<span className={styles.optionCounterNumber}>{options.rooms}</span>
+													<button
+														className={styles.optionCounterButton}
+														onClick={() => handleOption('rooms', 'i')}
+													>
+														+
+													</button>
+												</div>
 											</div>
 										</div>
-										<div className={styles.optionItem}>
-											<span className={styles.optionText}>Children</span>
-											<div className={styles.optionCounter}>
-												<button
-													disabled={options.children <= 0}
-													className={styles.optionCounterButton}
-													onClick={() => handleOption('children', 'd')}
-												>
-													-
-												</button>
-												{/* eslint-disable-next-line max-len */}
-												<span className={styles.optionCounterNumber}>{options.children}</span>
-												<button
-													className={styles.optionCounterButton}
-													onClick={() => handleOption('children', 'i')}
-												>
-													+
-												</button>
-											</div>
-										</div>
-										<div className={styles.optionItem}>
-											<span className={styles.optionText}>Room</span>
-											<div className={styles.optionCounter}>
-												<button
-													disabled={options.rooms <= 1}
-													className={styles.optionCounterButton}
-													onClick={() => handleOption('rooms', 'd')}
-												>
-													-
-												</button>
-												{/* eslint-disable-next-line max-len */}
-												<span className={styles.optionCounterNumber}>{options.rooms}</span>
-												<button
-													className={styles.optionCounterButton}
-													onClick={() => handleOption('rooms', 'i')}
-												>
-													+
-												</button>
-											</div>
-										</div>
-									</div>
-								)}
-								<button className={styles.searchBtn} onClick={handleSearch}>
-									Search
-								</button>
+									)}
+									<button className={styles.searchBtn} onClick={handleSearch}>
+										Search
+									</button>
+								</div>
 							</div>
 						</div>
-
-            </div>
 					</>
 				)}
 			</div>

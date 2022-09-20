@@ -35,7 +35,11 @@
 }
 
 .headerDesc {
-	margin: 20px 0px;
+	margin: 20px;
+}
+
+.headerDescAuth {
+	margin: 20px 0 60px 0;
 }
 
 .headerBtn,
@@ -50,7 +54,7 @@
 }
 
 .searchBtn {
-	padding: 6px 14px;
+	padding: 10px 14px;
 }
 
 .headerBtn {
@@ -59,7 +63,6 @@
 }
 
 .headerSearchContainer {
-	height: 50px;
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -67,7 +70,7 @@
 }
 
 .headerSearch {
-	padding: 15px;
+	padding: 10px 18px;
 	background-color: white;
 	border: 3px solid #febb02;
 	display: flex;

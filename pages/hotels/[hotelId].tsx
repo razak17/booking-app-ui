@@ -19,7 +19,7 @@ import MailList from '../../components/MailList';
 import Footer from '../../components/Footer';
 import Reserve from '../../components/Reserve';
 import styles from '../../styles/Hotel.module.css';
-import { dayDifference } from '../../utils/dayDiff';
+import { dayDifference } from '../../utils/dates';
 
 const Hotel = () => {
 	const router = useRouter();
@@ -55,12 +55,17 @@ const Hotel = () => {
 	};
 
 	const handleClick = () => {
-		if (user) {
-			setOpenModal(true);
-		} else {
-			alert('Please login to reserve a room');
+		if (!user) {
+			alert('Please login to book a room');
+			return;
 		}
+		if (days <= 0) {
+			alert('Please add a date range');
+			return;
+		}
+		setOpenModal(true);
 	};
+
 	return (
 		<div>
 			<Navbar />
