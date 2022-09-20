@@ -1,0 +1,57 @@
+.login {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.error {
+	color: red;
+	font-size: 12px;
+}
+
+.alReg {
+	padding-top: 12px;
+	font-size: 14px;
+}
+
+.alReg a {
+	text-decoration: none;
+	color: #0071c2;
+}
+
+.lContainer {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+}
+
+.lInput {
+	padding: 10px;
+	margin: 10px 0;
+	width: 100%;
+}
+
+.lButton {
+	border: none;
+	padding: 10px 20px;
+	margin-top: 12px;
+	background-color: #0071c2;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+	width: 100%;
+}
+
+.lButton:disabled {
+	background-color: #0071c28c;
+	cursor: not-allowed;
+}

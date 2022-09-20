@@ -59,3 +59,14 @@ export async function getHotelRooms(hotelId: string): Promise<Room[]> {
 	const res = await axios.get(`${hotelsBase}/room/${hotelId}`);
 	return res.data;
 }
+
+export const registerUser = async (payload: {
+	username: string;
+	email: string;
+	password: string;
+	confirmPassword: string;
+}) => {
+	const res = await axios.post(`${authBase}/register`, payload);
+	return res.data;
+};
+
