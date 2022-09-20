@@ -79,6 +79,7 @@ const Header = ({ type }: { type?: string }) => {
 							account
 						</p>
 						{!user && <button className={styles.headerBtn}>Sign in / Register</button>}
+            <div className={styles.headerSearchContainer}>
 						<div className={styles.headerSearch}>
 							<div className={styles.headerSearchItem}>
 								<FontAwesomeIcon icon={faBed} className={styles.headerIcon} />
@@ -182,6 +183,8 @@ const Header = ({ type }: { type?: string }) => {
 								</button>
 							</div>
 						</div>
+
+            </div>
 					</>
 				)}
 			</div>
