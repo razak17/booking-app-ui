@@ -104,7 +104,9 @@ const Hotel = () => {
 						</div>
 					)}
 					<div className={styles.hotelWrapper}>
-						<button className={styles.bookNow}>Reserve or Book Now!</button>
+						<button className={styles.bookNow} onClick={handleClick}>
+							Reserve or Book Now!
+						</button>
 						<h1 className={styles.hotelTitle}>{data?.name}</h1>
 						<div className={styles.hotelAddress}>
 							<FontAwesomeIcon icon={faLocationDot} />

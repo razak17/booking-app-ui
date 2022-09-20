@@ -5,6 +5,7 @@ import { Me, QueryKeys } from '../types';
 
 const MeContext = createContext<{
 	user: Me;
+  isLoading: boolean;
 	refetch: <TPageData>(
 		options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
 	) => any;
@@ -15,7 +16,7 @@ function MeContextProvider({ children }: { children: ReactNode }) {
 	const { data, isLoading, refetch } = useQuery(QueryKeys.me, getMe);
 
 	return (
-		<MeContext.Provider value={{ user: data, refetch }}>
+		<MeContext.Provider value={{ user: data, refetch, isLoading }}>
 			{isLoading ? <p>Loading</p> : children}
 		</MeContext.Provider>
 	);
