@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { registerUser } from '../../lib/api';
 import { QueryKeys } from '../../types';
-import styles from '../../styles/Register.module.css';
+import styles from '../../styles/Form.module.css';
 import Link from 'next/link';
 
 export const FormSchema = z

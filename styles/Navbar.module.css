@@ -1,28 +1,43 @@
-.navbar{
-  height: 50px;
-  background-color: #003580;
-  display: flex;
-  justify-content: center;
+.navbar {
+	height: 50px;
+	background-color: #003580;
+	display: flex;
+	justify-content: center;
 }
 
-.navContainer{
-  width: 100%;
-  max-width: 1024px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.navContainer {
+	width: 100%;
+	max-width: 1024px;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
-.logo{
-  font-weight: 500;
+.logo {
+	font-weight: 500;
 }
 
-.navButton{
-  margin-left: 20px;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  color: #003580;
+.navButton {
+	margin-left: 20px;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	color: #003580;
 }
 
+.infoButton {
+	margin-left: 20px;
+	border-radius: 5px;
+	border: none;
+	padding: 10px 15px;
+	cursor: pointer;
+	color: #fff;
+  background-color: #0071c2;
+}
+
+.userInfo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

@@ -44,7 +44,7 @@ function Footer() {
 					<li className={styles.fListItem}>Terms & conditions</li>
 				</ul>
 			</div>
-			<div className={styles.fText}>Copyright © 2022 Lamabooking.</div>
+			<div className={styles.fText}>All Rights Reserved © 2022 Bookin</div>
 		</div>
 	);
 }

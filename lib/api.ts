@@ -70,3 +70,12 @@ export const registerUser = async (payload: {
 	return res.data;
 };
 
+export const loginUser = async (payload: { email: string; password: string }) => {
+	const res = await auth.post(`${authBase}/login`, payload);
+	return res.data;
+};
+
+export const logoutUser = async () => {
+	const res = await auth.post(`${authBase}/logout`);
+	return res.data;
+};
