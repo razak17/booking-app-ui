@@ -3,8 +3,21 @@ import Image from 'next/image';
 
 import { Hotel } from '../types';
 import styles from '../styles/searchItem.module.css';
+import { useRouter } from 'next/router';
 
-const SearchItem = ({ item }: { item: Hotel }) => {
+const SearchItem = ({ item, days }: { item: Hotel; days: number }) => {
+	const router = useRouter();
+
+	console.log({ days });
+
+	const handleCheck = (route: string) => {
+		if (days > 0) {
+			router.push(route);
+		} else {
+			alert('Please select a date range');
+		}
+	};
+
 	return (
 		<div className={styles.searchItem}>
 			<Image width='200px' height='200px' src={item.photos[0]} alt='' className={styles.siImg} />
@@ -29,9 +42,9 @@ const SearchItem = ({ item }: { item: Hotel }) => {
 				<div className={styles.siDetailTexts}>
 					<span className={styles.siPrice}>${item.cheapestPrice}</span>
 					<span className={styles.siTaxOp}>Includes taxes and fees</span>
-					<Link href={`/hotels/${item._id}`}>
-						<button className={styles.siCheckButton}>See availability</button>
-					</Link>
+					<button onClick={() => handleCheck(`/hotels/${item._id}`)} className={styles.siCheckButton}>
+						Check availability
+					</button>
 				</div>
 			</div>
 		</div>

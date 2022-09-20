@@ -19,6 +19,7 @@ import MailList from '../../components/MailList';
 import Footer from '../../components/Footer';
 import Reserve from '../../components/Reserve';
 import styles from '../../styles/Hotel.module.css';
+import { dayDifference } from '../../utils/dayDiff';
 
 const Hotel = () => {
 	const router = useRouter();
@@ -33,13 +34,6 @@ const Hotel = () => {
 	console.log({ data });
 
 	const { dates, options } = useSearch();
-
-	const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
-	function dayDifference(date1: Date, date2: Date) {
-		const timeDiff = Math.abs(date2.getTime() - date1.getTime());
-		const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
-		return diffDays;
-	}
 
 	const days = dayDifference(dates[0].endDate as Date, dates[0].startDate as Date);
 
@@ -64,7 +58,7 @@ const Hotel = () => {
 		if (user) {
 			setOpenModal(true);
 		} else {
-			router.push('/auth/login');
+			alert('Please login to reserve a room');
 		}
 	};
 	return (
@@ -153,7 +147,7 @@ const Hotel = () => {
 										</>
 									)}
 								</h2>
-								<button onClick={handleClick}>Reserve or Book Now!</button>
+								<button onClick={handleClick}>Book Now!</button>
 							</div>
 						</div>
 					</div>

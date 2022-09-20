@@ -11,6 +11,7 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import SearchItem from '../components/SearchItem';
 import { useSearch } from '../context/search';
+import { dayDifference } from '../utils/dayDiff';
 
 const HotelsPage = () => {
 	const router = useRouter();
@@ -23,6 +24,8 @@ const HotelsPage = () => {
 	const { data, isLoading, refetch } = useQuery([QueryKeys.hotelListing], () =>
 		getHotelListing(destination, min, max)
 	);
+
+	const days = dayDifference(dates[0].endDate as Date, dates[0].startDate as Date);
 
 	const handleClick = () => {
 		refetch();
@@ -124,7 +127,7 @@ const HotelsPage = () => {
 						) : (
 							<>
 								{data?.length ? (
-									data?.map((item) => <SearchItem item={item} key={item._id} />)
+									data?.map((item) => <SearchItem days={days} item={item} key={item._id} />)
 								) : (
 									<h3>No Results Found At this Time</h3>
 								)}

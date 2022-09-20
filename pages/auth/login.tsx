@@ -73,7 +73,7 @@ const LoginPage = () => {
 						</button>
 						<span className={styles.alReg}>
 							new User?
-							<Link href='/auth/login'> register here</Link>
+							<Link href='/auth/register'> register here</Link>
 						</span>
 					</>
 				</form>

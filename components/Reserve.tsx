@@ -8,12 +8,14 @@ import styles from '../styles/Reserve.module.css';
 import { QueryKeys, Room, RoomNumbersType } from '../types';
 import { useSearch } from '../context/search';
 import { useRouter } from 'next/router';
+import { useIsAuth } from '../utils/useIsAuth';
 
 interface ReserveProps {
 	hotelId: string;
 	setOpen: Dispatch<SetStateAction<boolean>>;
 }
 function Reserve({ hotelId, setOpen }: ReserveProps) {
+	useIsAuth();
 	const [selectedRooms, setSelectedRooms] = useState<Room[]>([]);
 	const { data, isLoading } = useQuery([QueryKeys.hotelRooms], () => getHotelRooms(hotelId));
 	const { dates } = useSearch();
