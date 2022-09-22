@@ -20,6 +20,7 @@ import Footer from '../../components/Footer';
 import Reserve from '../../components/Reserve';
 import styles from '../../styles/Hotel.module.css';
 import { dayDifference } from '../../utils/dates';
+import Loader from '../../components/Loader';
 
 const Hotel = () => {
 	const router = useRouter();
@@ -71,7 +72,7 @@ const Hotel = () => {
 			<Navbar />
 			<Header type='list' />
 			{isLoading ? (
-				<p>Loading...</p>
+				<Loader />
 			) : (
 				<div className={styles.hotelContainer}>
 					{open && (

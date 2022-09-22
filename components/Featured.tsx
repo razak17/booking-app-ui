@@ -1,6 +1,7 @@
 import { useHotel } from '../context/hotels';
 import styles from '../styles/Featured.module.css';
 import FeaturedItem from './FeaturedItem';
+import Loader from './Loader';
 
 const Featured = () => {
 	const { count, countIsLoading } = useHotel();
@@ -9,7 +10,7 @@ const Featured = () => {
 	return (
 		<div className={styles.featured}>
 			{countIsLoading ? (
-				<p>Loading...</p>
+				<Loader />
 			) : (
 				<>
 					<FeaturedItem

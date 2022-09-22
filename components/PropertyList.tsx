@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useHotel } from '../context/hotels';
 import styles from '../styles/PropertyList.module.css';
+import Loader from './Loader';
 
 function PropertyList() {
 	const { type, typeIsLoading } = useHotel();
@@ -17,7 +18,7 @@ function PropertyList() {
 	return (
 		<div className={styles.pList}>
 			{typeIsLoading ? (
-				<p>Loading...</p>
+        <Loader />
 			) : (
 				<>
 					{type &&

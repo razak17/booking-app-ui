@@ -12,6 +12,7 @@ import Header from '../components/Header';
 import SearchItem from '../components/SearchItem';
 import { useSearch } from '../context/search';
 import { dayDifference } from '../utils/dates';
+import Loader from '../components/Loader';
 
 const HotelsPage = () => {
 	const router = useRouter();
@@ -123,7 +124,7 @@ const HotelsPage = () => {
 					</div>
 					<div className={styles.listResult}>
 						{isLoading ? (
-							<p>loading...</p>
+              <Loader />
 						) : (
 							<>
 								{data?.length ? (

@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import { useHotel } from '../context/hotels';
 import styles from '../styles/FeaturedProperties.module.css';
+import Loader from './Loader';
 
 function FeaturedProperties() {
 	const { featured, featuredIsLoading } = useHotel();
@@ -10,7 +11,7 @@ function FeaturedProperties() {
 	return (
 		<div className={styles.fp}>
 			{featuredIsLoading ? (
-				'Loading'
+        <Loader />
 			) : (
 				<>
 					{featured.map((item) => (
